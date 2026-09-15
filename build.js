@@ -1,4 +1,4 @@
-const esbuild = require("esbuild");
+import * as esbuild from "esbuild";
 
 esbuild
   .build({
@@ -6,6 +6,7 @@ esbuild
     bundle: true,
     platform: "node",
     target: "node24",
+    format: "esm",
     outfile: "dist/index.js",
 
     external: [

@@ -1,4 +1,4 @@
-const core = require("@actions/core");
+import * as core from "@actions/core";
 
 class Logger {
   info(message) {
@@ -45,4 +45,4 @@ class Logger {
   }
 }
 
-module.exports = new Logger();
+export default new Logger();

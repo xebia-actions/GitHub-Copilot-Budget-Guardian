@@ -1,15 +1,19 @@
-jest.mock("@actions/github", () => ({
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("@actions/github", () => ({
   getOctokit: jest.fn()
 }));
 
-jest.mock("../src/logger", () => ({
-  info: jest.fn(),
-  success: jest.fn()
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    info: jest.fn(),
+    success: jest.fn()
+  }
 }));
 
-const github = require("@actions/github");
-const logger = require("../src/logger");
-const GitHubClient = require("../src/github-client");
+const github = await import("@actions/github");
+const logger = (await import("../src/logger.js")).default;
+const GitHubClient = (await import("../src/github-client.js")).default;
 
 describe("github-client", () => {
   let request;

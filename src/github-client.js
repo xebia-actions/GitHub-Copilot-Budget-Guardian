@@ -1,5 +1,5 @@
-const github = require("@actions/github");
-const logger = require("./logger");
+import * as github from "@actions/github";
+import logger from "./logger.js";
 
 class GitHubClient {
   constructor(token) {
@@ -119,4 +119,4 @@ class GitHubClient {
   }
 }
 
-module.exports = GitHubClient;
+export default GitHubClient;

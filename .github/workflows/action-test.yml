@@ -1,3 +1,5 @@
+# This workflow is managed by gh actions-lock.
+
 name: GitHub Copilot Budget Guardian Integration Test
 
 "on":
@@ -15,11 +17,11 @@ jobs:
     steps:
       # 1) Checkout repository code
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       # 2) Configure Node.js runtime and npm cache
       - name: Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7.0.0
         with:
           node-version: "24"
           cache: npm
@@ -55,7 +57,7 @@ jobs:
       # 6) Execute action in dry-run mode against example data
       - name: Execute GitHub Copilot Budget Guardian
         id: guardian
-        uses: ./
+        uses: $/
         with:
           github-token: ${{ secrets.ENTERPRISE_ADMIN_PAT }}
           enterprise-slug: ${{ secrets.ENTERPRISE_SLUG }}
@@ -89,7 +91,7 @@ jobs:
 
       # 9) Upload generated reports as workflow artifacts
       - name: Upload report artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: budget-sync-report
           path: artifacts/

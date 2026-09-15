@@ -1,5 +1,5 @@
-const https = require("https");
-const { URL } = require("url");
+import https from "https";
+import { URL } from "url";
 
 /**
  * Posts a JSON payload to a URL over HTTPS.
@@ -44,4 +44,4 @@ function postJson(urlString, payload) {
   });
 }
 
-module.exports = { postJson };
+export { postJson };

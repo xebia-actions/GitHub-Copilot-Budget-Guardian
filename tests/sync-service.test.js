@@ -1,25 +1,33 @@
-jest.mock("../src/logger", () => ({
-  startGroup: jest.fn(),
-  success: jest.fn(),
-  warning: jest.fn(),
-  info: jest.fn(),
-  error: jest.fn(),
-  setOutput: jest.fn(),
-  endGroup: jest.fn()
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    startGroup: jest.fn(),
+    success: jest.fn(),
+    warning: jest.fn(),
+    info: jest.fn(),
+    error: jest.fn(),
+    setOutput: jest.fn(),
+    endGroup: jest.fn()
+  }
 }));
 
-jest.mock("../src/validator", () => ({
-  validateBudgets: jest.fn()
+jest.unstable_mockModule("../src/validator.js", () => ({
+  default: {
+    validateBudgets: jest.fn()
+  }
 }));
 
-jest.mock("../src/report-service", () => ({
-  generate: jest.fn()
+jest.unstable_mockModule("../src/report-service.js", () => ({
+  default: {
+    generate: jest.fn()
+  }
 }));
 
-const logger = require("../src/logger");
-const validator = require("../src/validator");
-const reportService = require("../src/report-service");
-const syncService = require("../src/sync-service");
+const logger = (await import("../src/logger.js")).default;
+const validator = (await import("../src/validator.js")).default;
+const reportService = (await import("../src/report-service.js")).default;
+const syncService = (await import("../src/sync-service.js")).default;
 
 describe("sync-service.sync", () => {
   beforeEach(() => {

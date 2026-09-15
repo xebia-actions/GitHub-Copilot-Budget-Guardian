@@ -1,4 +1,4 @@
-const core = require("@actions/core");
+import * as core from "@actions/core";
 
 class Config {
   validateNotifyOn(notifyOn) {
@@ -129,4 +129,4 @@ class Config {
   }
 }
 
-module.exports = new Config();
+export default new Config();

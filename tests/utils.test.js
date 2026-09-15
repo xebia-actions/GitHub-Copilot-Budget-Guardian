@@ -1,9 +1,13 @@
-jest.mock("https", () => ({
-  request: jest.fn()
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("https", () => ({
+  default: {
+    request: jest.fn()
+  }
 }));
 
-const https = require("https");
-const { postJson } = require("../src/utils");
+const https = (await import("https")).default;
+const { postJson } = await import("../src/utils.js");
 
 describe("utils.postJson", () => {
   beforeEach(() => {

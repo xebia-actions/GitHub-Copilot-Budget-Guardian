@@ -1,0 +1,34 @@
+# This workflow is managed by gh actions-lock.
+
+name: Submit and validate dependencies of GitHub Actions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: '33 4 * * *'
+
+permissions: {}
+
+jobs:
+  submit-actions-dependencies:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2.21.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@v7.0.1
+      - uses: jessehouwing/actions-dependency-submission@v1.0.16
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/dependency-review-action@v5.0.0
+        if: github.event_name == 'pull_request'
+        with:
+          retry-on-snapshot-warnings: true

@@ -1,18 +1,27 @@
-const fs = require("fs");
+import { jest } from "@jest/globals";
+import fs from "fs";
 
-jest.mock("../src/logger", () => ({
-  success: jest.fn(),
-  warning: jest.fn(),
-  info: jest.fn()
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    success: jest.fn(),
+    warning: jest.fn(),
+    info: jest.fn()
+  }
 }));
 
-const logger = require("../src/logger");
+const mockSendMail = jest.fn();
+const mockCreateTransport = jest.fn().mockReturnValue({ sendMail: mockSendMail });
+
+jest.unstable_mockModule("nodemailer", () => ({
+  default: {
+    createTransport: mockCreateTransport
+  }
+}));
+
+const logger = (await import("../src/logger.js")).default;
+const { sendEmail } = await import("../src/services/email-service.js");
 
 describe("email-service.sendEmail", () => {
-  let sendEmail;
-  let mockSendMail;
-  let mockCreateTransport;
-
   const baseContext = {
     repository: "acme/copilot",
     enterprise: "acme-enterprise",
@@ -30,16 +39,8 @@ describe("email-service.sendEmail", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    jest.resetModules();
-
-    mockSendMail = jest.fn().mockResolvedValue({});
-    mockCreateTransport = jest.fn().mockReturnValue({ sendMail: mockSendMail });
-
-    jest.doMock("nodemailer", () => ({
-      createTransport: mockCreateTransport
-    }));
-
-    sendEmail = require("../src/services/email-service").sendEmail;
+    mockSendMail.mockResolvedValue({});
+    mockCreateTransport.mockReturnValue({ sendMail: mockSendMail });
   });
 
   afterEach(() => {
