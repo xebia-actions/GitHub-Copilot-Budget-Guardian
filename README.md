@@ -2,9 +2,9 @@
 
 GitHub Copilot Budget Guardian is a GitHub Action for managing Copilot Enterprise budgets as code. Define desired budgets in a CSV file, and the Action validates the input, compares it with Enterprise state, applies necessary changes, and produces an audit trail.
 
-[![CI](https://github.com/xebia-playground/GitHub-Copilot-Budget-Guardian/actions/workflows/test.yml/badge.svg)](https://github.com/xebia-playground/GitHub-Copilot-Budget-Guardian/actions/workflows/test.yml)
+[![CI](https://github.com/xebia-actions/GitHub-Copilot-Budget-Guardian/actions/workflows/test.yml/badge.svg)](https://github.com/xebia-actions/GitHub-Copilot-Budget-Guardian/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/xebia-playground/GitHub-Copilot-Budget-Guardian)](https://github.com/xebia-playground/GitHub-Copilot-Budget-Guardian/releases)
+[![Release](https://img.shields.io/github/v/release/xebia-actions/GitHub-Copilot-Budget-Guardian)](https://github.com/xebia-actions/GitHub-Copilot-Budget-Guardian/releases)
 
 ## Key Capabilities
 
@@ -49,7 +49,7 @@ GitHub Copilot Budget Guardian is a GitHub Action for managing Copilot Enterpris
 
          - name: Sync Copilot budgets
            id: guardian
-           uses: xebia-playground/GitHub-Copilot-Budget-Guardian@v1.0.0
+           uses: xebia-actions/GitHub-Copilot-Budget-Guardian@v1.0.0
            with:
              github-token: "${{ secrets.ENTERPRISE_ADMIN_PAT }}"
              enterprise-slug: "${{ secrets.ENTERPRISE_SLUG }}"
