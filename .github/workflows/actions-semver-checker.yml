@@ -1,0 +1,38 @@
+# This workflow is managed by gh actions-lock.
+
+name: Check SemVer
+
+on:
+  push:
+    branches: ['main']
+    tags:
+      - '*'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check-semver:
+    permissions:
+      contents: write
+
+    concurrency:
+      group: '${{ github.workflow }}'
+      cancel-in-progress: true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2.21.0
+        with:
+          egress-policy: audit
+
+      - uses: jessehouwing/actions-semver-checker@v2.1.0
+        with:
+          check-minor-version: error
+          check-release-immutability: error
+          ignore-preview-releases: true
+          check-releases: error
+          token: ${{ secrets.GITHUB_TOKEN }}
+          auto-fix: true

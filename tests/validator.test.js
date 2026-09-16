@@ -1,10 +1,14 @@
-jest.mock("../src/logger", () => ({
-  error: jest.fn(),
-  success: jest.fn()
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    error: jest.fn(),
+    success: jest.fn()
+  }
 }));
 
-const logger = require("../src/logger");
-const validator = require("../src/validator");
+const logger = (await import("../src/logger.js")).default;
+const validator = (await import("../src/validator.js")).default;
 
 describe("validator.validateBudgets", () => {
   beforeEach(() => {

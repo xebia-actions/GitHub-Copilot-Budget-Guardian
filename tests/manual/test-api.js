@@ -1,4 +1,4 @@
-const GitHubClient = require("../../src/github-client");
+import GitHubClient from "../../src/github-client.js";
 
 async function run() {
 

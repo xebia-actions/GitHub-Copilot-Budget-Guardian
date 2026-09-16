@@ -1,7 +1,7 @@
-const logger = require("../logger");
-const { sendEmail } = require("./email-service");
-const { sendTeams } = require("./teams-service");
-const { sendSlack } = require("./slack-service");
+import logger from "../logger.js";
+import { sendEmail } from "./email-service.js";
+import { sendTeams } from "./teams-service.js";
+import { sendSlack } from "./slack-service.js";
 
 function getErrorMessage(err) {
   if (err instanceof Error && err.message) {
@@ -80,4 +80,4 @@ async function runNotifications(context, result, notifyOn) {
   logger.endGroup();
 }
 
-module.exports = { runNotifications };
+export { runNotifications };

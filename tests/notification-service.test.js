@@ -1,28 +1,32 @@
-jest.mock("../src/logger", () => ({
-  startGroup: jest.fn(),
-  endGroup: jest.fn(),
-  info: jest.fn(),
-  warning: jest.fn(),
-  success: jest.fn()
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    startGroup: jest.fn(),
+    endGroup: jest.fn(),
+    info: jest.fn(),
+    warning: jest.fn(),
+    success: jest.fn()
+  }
 }));
 
-jest.mock("../src/services/email-service", () => ({
+jest.unstable_mockModule("../src/services/email-service.js", () => ({
   sendEmail: jest.fn()
 }));
 
-jest.mock("../src/services/teams-service", () => ({
+jest.unstable_mockModule("../src/services/teams-service.js", () => ({
   sendTeams: jest.fn()
 }));
 
-jest.mock("../src/services/slack-service", () => ({
+jest.unstable_mockModule("../src/services/slack-service.js", () => ({
   sendSlack: jest.fn()
 }));
 
-const logger = require("../src/logger");
-const { sendEmail } = require("../src/services/email-service");
-const { sendTeams } = require("../src/services/teams-service");
-const { sendSlack } = require("../src/services/slack-service");
-const { runNotifications } = require("../src/services/notification-service");
+const logger = (await import("../src/logger.js")).default;
+const { sendEmail } = await import("../src/services/email-service.js");
+const { sendTeams } = await import("../src/services/teams-service.js");
+const { sendSlack } = await import("../src/services/slack-service.js");
+const { runNotifications } = await import("../src/services/notification-service.js");
 
 const baseContext = {
   repository: "acme/copilot",

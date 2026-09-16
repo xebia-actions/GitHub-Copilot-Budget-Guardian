@@ -1,9 +1,11 @@
-jest.mock("@actions/core", () => ({
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("@actions/core", () => ({
   getInput: jest.fn()
 }));
 
-const core = require("@actions/core");
-const config = require("../src/config");
+const core = await import("@actions/core");
+const config = (await import("../src/config.js")).default;
 
 describe("config.load notify-on validation", () => {
   const originalGithubActions = process.env.GITHUB_ACTIONS;

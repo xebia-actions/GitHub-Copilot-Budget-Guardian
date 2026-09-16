@@ -1,6 +1,7 @@
-const fs = require("fs");
-const path = require("path");
-const logger = require("../logger");
+import fs from "fs";
+import path from "path";
+import logger from "../logger.js";
+import nodemailer from "nodemailer";
 
 /**
  * Sends an email notification to Enterprise Administrators.
@@ -48,8 +49,6 @@ async function sendEmail(context, result) {
     );
     return;
   }
-
-  const nodemailer = require("nodemailer");
 
   const transporter = nodemailer.createTransport({
     host: smtpHost,
@@ -124,4 +123,4 @@ async function sendEmail(context, result) {
   );
 }
 
-module.exports = { sendEmail };
+export { sendEmail };

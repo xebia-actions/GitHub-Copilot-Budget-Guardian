@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const logger = require("./logger");
+import fs from "fs";
+import path from "path";
+import logger from "./logger.js";
 
 /**
  * Quotes a value for safe inclusion in a CSV field.
@@ -256,4 +256,4 @@ ${budgets
   }
 }
 
-module.exports = new ReportService();
+export default new ReportService();

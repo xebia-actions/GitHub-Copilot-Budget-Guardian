@@ -1,4 +1,4 @@
-const logger = require("./logger");
+import logger from "./logger.js";
 
 class Validator {
   validateBudgets(budgets) {
@@ -36,4 +36,4 @@ class Validator {
   }
 }
 
-module.exports = new Validator();
+export default new Validator();

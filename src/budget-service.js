@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
-const { parse } = require("csv-parse/sync");
-const logger = require("./logger");
+import fs from "fs";
+import path from "path";
+import { parse } from "csv-parse/sync";
+import logger from "./logger.js";
 
 class BudgetService {
   loadBudgets(filePath) {
@@ -46,4 +46,4 @@ class BudgetService {
   }
 }
 
-module.exports = new BudgetService();
+export default new BudgetService();

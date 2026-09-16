@@ -1,10 +1,10 @@
-const logger = require("./logger");
-const config = require("./config");
-const budgetService = require("./budget-service");
-const SyncService = require("./sync-service");
-const GitHubClient = require("./github-client");
-const reportService = require("./report-service");
-const { runNotifications } = require("./services/notification-service");
+import logger from "./logger.js";
+import config from "./config.js";
+import budgetService from "./budget-service.js";
+import SyncService from "./sync-service.js";
+import GitHubClient from "./github-client.js";
+import reportService from "./report-service.js";
+import { runNotifications } from "./services/notification-service.js";
 
 async function run() {
   try {

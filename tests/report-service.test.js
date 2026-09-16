@@ -1,13 +1,16 @@
-const fs = require("fs");
-const path = require("path");
+import { jest } from "@jest/globals";
+import fs from "fs";
+import path from "path";
 
-jest.mock("../src/logger", () => ({
-  success: jest.fn(),
-  info: jest.fn()
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    success: jest.fn(),
+    info: jest.fn()
+  }
 }));
 
-const logger = require("../src/logger");
-const reportService = require("../src/report-service");
+const logger = (await import("../src/logger.js")).default;
+const reportService = (await import("../src/report-service.js")).default;
 
 describe("report-service.generate", () => {
   beforeEach(() => {

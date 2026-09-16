@@ -1,5 +1,5 @@
-const logger = require("../logger");
-const { postJson } = require("../utils");
+import logger from "../logger.js";
+import { postJson } from "../utils.js";
 
 /**
  * Sends a Block Kit notification to Slack.
@@ -110,4 +110,4 @@ async function sendSlack(context, result) {
   logger.success("Slack notification sent.");
 }
 
-module.exports = { sendSlack };
+export { sendSlack };

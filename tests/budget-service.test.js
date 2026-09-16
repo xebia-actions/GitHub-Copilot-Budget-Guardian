@@ -1,16 +1,19 @@
-const fs = require("fs");
-const os = require("os");
-const path = require("path");
+import { jest } from "@jest/globals";
+import fs from "fs";
+import os from "os";
+import path from "path";
 
-jest.mock("../src/logger", () => ({
-  info: jest.fn(),
-  success: jest.fn(),
-  startGroup: jest.fn(),
-  endGroup: jest.fn()
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    info: jest.fn(),
+    success: jest.fn(),
+    startGroup: jest.fn(),
+    endGroup: jest.fn()
+  }
 }));
 
-const logger = require("../src/logger");
-const budgetService = require("../src/budget-service");
+const logger = (await import("../src/logger.js")).default;
+const budgetService = (await import("../src/budget-service.js")).default;
 
 describe("budget-service", () => {
   let tempDir;

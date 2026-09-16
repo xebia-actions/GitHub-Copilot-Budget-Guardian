@@ -1,5 +1,5 @@
-const logger = require("../logger");
-const { postJson } = require("../utils");
+import logger from "../logger.js";
+import { postJson } from "../utils.js";
 
 /**
  * Sends an Adaptive Card notification to Microsoft Teams.
@@ -189,4 +189,4 @@ function buildStatusRow(user, statusText, previousBudget, newBudget, color) {
   };
 }
 
-module.exports = { sendTeams };
+export { sendTeams };

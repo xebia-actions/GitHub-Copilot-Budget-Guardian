@@ -1,6 +1,6 @@
-const logger = require("./logger");
-const validator = require("./validator");
-const reportService = require("./report-service");
+import logger from "./logger.js";
+import validator from "./validator.js";
+import reportService from "./report-service.js";
 
 class SyncService {
   async sync(budgets, githubClient, config) {
@@ -245,4 +245,4 @@ class SyncService {
   }
 }
 
-module.exports = new SyncService();
+export default new SyncService();

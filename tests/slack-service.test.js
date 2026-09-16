@@ -1,15 +1,19 @@
-jest.mock("../src/logger", () => ({
-  success: jest.fn(),
-  warning: jest.fn()
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("../src/logger.js", () => ({
+  default: {
+    success: jest.fn(),
+    warning: jest.fn()
+  }
 }));
 
-jest.mock("../src/utils", () => ({
+jest.unstable_mockModule("../src/utils.js", () => ({
   postJson: jest.fn()
 }));
 
-const logger = require("../src/logger");
-const { postJson } = require("../src/utils");
-const { sendSlack } = require("../src/services/slack-service");
+const logger = (await import("../src/logger.js")).default;
+const { postJson } = await import("../src/utils.js");
+const { sendSlack } = await import("../src/services/slack-service.js");
 
 const baseContext = {
   repository: "acme/copilot",
