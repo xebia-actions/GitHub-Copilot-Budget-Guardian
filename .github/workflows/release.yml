@@ -1,6 +1,6 @@
 # This workflow is managed by gh actions-lock.
 
-name: Release
+name: Release Build
 
 on:
   workflow_dispatch:
