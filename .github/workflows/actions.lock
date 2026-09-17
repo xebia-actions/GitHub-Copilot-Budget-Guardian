@@ -10,11 +10,11 @@ workflows:
     '.github/workflows/actions-dependency-submission.yml':
         - 'actions/checkout@v7.0.1'
         - 'actions/dependency-review-action@v5.0.0'
-        - 'jessehouwing/actions-dependency-submission@v1.0.16'
-        - 'step-security/harden-runner@v2.21.0'
+        - 'jessehouwing/actions-dependency-submission@v1.0.17'
+        - 'step-security/harden-runner@v2.21.1'
     '.github/workflows/actions-semver-checker.yml':
-        - 'jessehouwing/actions-semver-checker@v2.1.0'
-        - 'step-security/harden-runner@v2.21.0'
+        - 'jessehouwing/actions-semver-checker@v2.1.1'
+        - 'step-security/harden-runner@v2.21.1'
     '.github/workflows/release.yml':
         - 'actions/checkout@v7.0.1'
         - 'actions/setup-node@v7.0.0'
@@ -42,18 +42,18 @@ dependencies:
         commit: 'sha1-043fb46d1a93c77aae656e7c1c64a875d1fc6a0a'
         owner_id: 44036562
         repo_id: 192625955
-    'jessehouwing/actions-dependency-submission@v1.0.16':
-        ref: 'v1.0.16'
-        commit: 'sha1-697d63307d85445f08471e2a6ab905937c2f7d18'
+    'jessehouwing/actions-dependency-submission@v1.0.17':
+        ref: 'v1.0.17'
+        commit: 'sha1-aa358ec7aee0a7f2dbaef9702915b28e90879842'
         owner_id: 4173387
         repo_id: 1109249632
-    'jessehouwing/actions-semver-checker@v2.1.0':
-        ref: 'v2.1.0'
-        commit: 'sha1-1d5f1c217079bb5366ed9b12025fcece100f6bc5'
+    'jessehouwing/actions-semver-checker@v2.1.1':
+        ref: 'v2.1.1'
+        commit: 'sha1-550e3a35452defcedbdc51aca36487c3bfee0696'
         owner_id: 4173387
         repo_id: 684124547
-    'step-security/harden-runner@v2.21.0':
-        ref: 'v2.21.0'
-        commit: 'sha1-05e31511f85b41b11d1cf0ef85d0992719546e2c'
+    'step-security/harden-runner@v2.21.1':
+        ref: 'v2.21.1'
+        commit: 'sha1-e14015d583714f6e62063499dc959a02595150a1'
         owner_id: 88700172
         repo_id: 422287306
