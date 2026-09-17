@@ -1,6 +1,6 @@
 # This workflow is managed by gh actions-lock.
 
-name: Check SemVer
+name: SemVer Check
 
 on:
   push:

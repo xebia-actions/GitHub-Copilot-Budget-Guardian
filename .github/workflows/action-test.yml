@@ -1,6 +1,6 @@
 # This workflow is managed by gh actions-lock.
 
-name: GitHub Copilot Budget Guardian Integration Test
+name: Integration Test
 
 "on":
   workflow_dispatch:
