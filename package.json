@@ -30,7 +30,7 @@
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@actions/github": "^9.1.1",
-    "csv-parse": "^7.0.2",
+    "csv-parse": "^7.0.3",
     "nodemailer": "^10.0.10"
   },
   "devDependencies": {
