@@ -21,7 +21,7 @@ jobs:
 
       # 2) Configure Node.js runtime and npm cache
       - name: Setup Node.js 24
-        uses: actions/setup-node@v7.0.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: "24"
           cache: npm
