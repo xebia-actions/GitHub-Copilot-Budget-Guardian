@@ -91,7 +91,7 @@ jobs:
 
       # 9) Upload generated reports as workflow artifacts
       - name: Upload report artifacts
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: budget-sync-report
           path: artifacts/
